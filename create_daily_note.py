@@ -5,6 +5,7 @@ from datetime import datetime
 NOTE_TEMPLATE = r"""# English Listening Practice
 
 **Date:** {date}
+**Time:** {time}
 
 ---
 
@@ -40,6 +41,7 @@ def create_daily_note():
     today = datetime.now()
     date_str = today.strftime("%Y-%m-%d")
     time_str = today.strftime("%H%M%S")
+    time_str2 = today.strftime("%H:%M:%S")
     
     # 生成文件名（精确到秒）
     filename = f"{date_str}_{time_str}_English_Listening.md"
@@ -51,7 +53,7 @@ def create_daily_note():
         return filepath
     
     # 生成文件内容
-    content = NOTE_TEMPLATE.format(date=today.strftime("%Y-%m-%d"))
+    content = NOTE_TEMPLATE.format(date=today.strftime("%Y-%m-%d"), time=time_str2)
     
     # 创建文件（添加异常处理）
     try:
